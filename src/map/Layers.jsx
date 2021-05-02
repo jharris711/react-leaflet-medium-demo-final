@@ -57,7 +57,6 @@ const Layers = () => {
           />
         </LayersControl.BaseLayer>
         {borderData.map((data) => {
-          console.log(data)
           const geojson = data.features[0].geometry
           const state_name = data.features[0].properties.display_name.split(',')[0]
           
