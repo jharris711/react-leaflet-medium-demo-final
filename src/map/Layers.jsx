@@ -41,6 +41,19 @@ const Layers = () => {
     }
   }
 
+  const onMouseEvent = (event, type) => {
+    switch (type) {
+      case 'over':
+        event.target.setStyle({ fillOpacity: 0.5 })
+        break
+      case 'out':
+        event.target.setStyle({ fillOpacity: 0.0 })
+        break
+      default:
+        break
+    }
+  }
+
   return (
     <>
       <LayersControl position="topright">
@@ -64,7 +77,15 @@ const Layers = () => {
             <>
               <LayersControl.Overlay checked name={state_name}>
                 <LayerGroup>
-                <GeoJSON key={state_name} data={geojson} pathOptions={{ color: 'blue' }}>
+                <GeoJSON 
+                  key={state_name} 
+                  data={geojson} 
+                  pathOptions={{ color: 'blue' }}
+                  eventHandlers={{
+                    mouseover: (event, type) => onMouseEvent(event, 'over'),
+                    mouseout: (event, type) => onMouseEvent(event, 'out'),
+                  }}
+                >
                   <Marker position={getMarkerPosition(state_name)}>
                     <Popup>
                       <Typography variant='subtitle2'>
