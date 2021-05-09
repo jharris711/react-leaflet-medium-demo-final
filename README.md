@@ -12,3 +12,8 @@ Then, change into the project directory and install the dependencies:
 ```bash 
 cd react-leaflet-medium-demo-final && npm install
 ```
+
+Then, start the app and head to `localhost:3000`:
+```bash
+npm start
+```
